@@ -1,39 +1,53 @@
-var users = [
+
+
+var usersDb = [
     {
-        nom: "GUELLATI",
-        age: 22,
-        note: 15,
+        email: "pabette25@gmail.com",
+        mdp: 123456,
     },
     {
-        nom: "Mahmoud",
-        age: 18,
-        note: 11,
+        email: "m.a.guellati@gmail.com",
+        mdp: 1234567,
     },
     {
-        nom: "Selma",
-        age: 17,
-        note: 15,
-    },
-    {
-        nom: "Hamid",
-        age: 17,
-        note: 9,
-    },
+        email: "guellati.med.amine@gmail.com",
+        mdp: 12345678,
+    }
 ]
 
-for (let i = 0; i < users.length; i++) {
-    if (users[i].note >= 10 && users[i].note < 12) {
-        users[i].specialite = "GAT - ST";
+let inputEmail = "guellati.med.amine@gmail.com";
+let inputMdp = 1234568;
+
+
+function emailChecker(inputEmail, inputMdp) {
+
+    var emailFound
+    var mdpFound
+
+
+    for (let i = 0; i < usersDb.length; i++) {
+
+        if (inputEmail == usersDb[i].email) {
+
+            emailFound = usersDb[i].email;
+            mdpFound = usersDb[i].mdp;
+        }
     }
-    else if (users[i].note >= 12 && users[i].note < 15) {
-        users[i].specialite = "GAT - ST - MI";
-    }
-    else if (users[i].note >= 15) {
-        users[i].specialite = "GAT - ST - MI - ESI";
+
+
+    if (!emailFound) {
+        alert("le email n'existe pas");
     }
     else {
-        users[i].specialite = "Non Admis"
+
+        if (inputMdp == mdpFound) {
+            alert("le mdp est correct")
+        }
+        else {
+            alert("le mdp est incorrect")
+        }
     }
 }
 
-console.log(users);
+emailChecker(inputEmail, inputMdp);
+
